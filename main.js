@@ -1,4 +1,8 @@
-
+/*
+  each entry has a key of the form 'x,y' representing a single square 
+  in the chess board and its value is the valid positions a knight 
+  can move to from that position. x,y values are in range 0 to 7
+*/
 function createAdjacencyList() {
   let moves = [
     [1, 2],
@@ -30,6 +34,17 @@ function createAdjacencyList() {
     }
   }
   return adjacencyList;
+}
+
+/*
+  We need a simple way to get the value at a certain key, since the key is a string 
+  in the form of 'x,y', and our main function will use a literal array ([x,y]) to specify 
+  start and end positions
+*/
+function getValue(array) {
+  let [x, y] = array;
+  let key = `${x},${y}`;
+  return graph[key];
 }
 
 let graph = createAdjacencyList();
